@@ -1,3 +1,4 @@
+using JetBrains.Rider.Unity.Editor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -5,7 +6,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]private GameObject bullet;
+    [SerializeField]private Rigidbody bullet;
+
+
     
     private void Update()
     {
@@ -31,10 +34,15 @@ public class PlayerMovement : MonoBehaviour
 
     public void Bullet()
     {
-        if(Input.GetKeyDown(KeyCode.Space)) 
+        Rigidbody cloneBullet;
+        if (Input.GetKeyDown(KeyCode.Space)) 
         {
-            Instantiate(bullet);
+            
+            cloneBullet = Instantiate(bullet,new Vector3(-15.9890003f, 0.651000023f, 0),transform.rotation);
+            cloneBullet.velocity = transform.TransformDirection(Vector3.right *10);
+            Destroy(cloneBullet,2);
         }
+
     }
 
     
