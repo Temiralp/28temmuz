@@ -5,9 +5,19 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    [SerializeField]private GameObject bullet;
     
     private void Update()
+    {
+        PlayerMovementUpAndDown();
+
+
+
+    }
+
+
+
+    private void PlayerMovementUpAndDown()
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
@@ -18,4 +28,14 @@ public class PlayerMovement : MonoBehaviour
             transform.Translate(Vector2.down);
         }
     }
+
+    public void Bullet()
+    {
+        if(Input.GetKeyDown(KeyCode.Space)) 
+        {
+            Instantiate(bullet);
+        }
+    }
+
+    
 }
