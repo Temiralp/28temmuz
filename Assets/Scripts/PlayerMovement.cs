@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     {
         PlayerMovementUpAndDown();
 
-
+        Bullet();
 
     }
 
@@ -39,10 +39,10 @@ public class PlayerMovement : MonoBehaviour
         {
             
             cloneBullet = Instantiate(bullet,new Vector3(-15.9890003f, 0.651000023f, 0),transform.rotation);
-            cloneBullet.velocity = transform.TransformDirection(Vector3.right *10);
-            Destroy(cloneBullet,2);
+            cloneBullet.velocity = transform.TransformDirection(Vector3.right *20);
+            Destroy(cloneBullet.gameObject, 2);
         }
-
+        
     }
 
     
