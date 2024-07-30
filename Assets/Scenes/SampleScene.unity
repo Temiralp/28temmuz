@@ -210,15 +210,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3242054756156653182, guid: 90ff419ba8c17ce45b904266d6134d5a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3242054756156653182, guid: 90ff419ba8c17ce45b904266d6134d5a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3242054756156653182, guid: 90ff419ba8c17ce45b904266d6134d5a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3242054756156653182, guid: 90ff419ba8c17ce45b904266d6134d5a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1200,7 +1200,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1841601286}
-  - {fileID: 396807947}
   - {fileID: 508762137}
   - {fileID: 913214076}
   - {fileID: 829059342}
