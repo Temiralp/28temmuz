@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     }
     #endregion
 
-    [SerializeField] private Rigidbody bullet;
+    [SerializeField] private Rigidbody2D bullet;
     public int maxHealth;
     public int health; // player can.
     public int takenDamage;
@@ -58,11 +58,11 @@ public class Player : MonoBehaviour
     //Merminin ates edildigi zaman.
     public void FireBullet()
     {
-        Rigidbody cloneBullet;
+        Rigidbody2D cloneBullet;
         if (Input.GetKeyDown(KeyCode.Space))
         {
 
-            cloneBullet = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
+            cloneBullet = Instantiate(bullet, new Vector2(transform.position.x, transform.position.y), transform.rotation);
             cloneBullet.velocity = transform.TransformDirection(Vector3.right * 20);
             Destroy(cloneBullet.gameObject, 2);
         }

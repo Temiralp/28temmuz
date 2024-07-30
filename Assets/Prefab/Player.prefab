@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b37ef35f7d53bf4bb3a55c64f92b732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 2533747296202261554, guid: 90ff419ba8c17ce45b904266d6134d5a, type: 3}
+  bullet: {fileID: 3692461001673198157, guid: 90ff419ba8c17ce45b904266d6134d5a, type: 3}
   maxHealth: 0
   health: 0
   takenDamage: 0
