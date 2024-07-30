@@ -7,38 +7,42 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]private Rigidbody bullet;
+    [SerializeField]private Transform playerTransform;
+    private Rigidbody2D playerRb;
 
+    private float moveSpeed;
+    float dirX, dirY;
 
-    
+    #region Initiliaze
+    private void Awake()
+    {
+        playerRb = GetComponent<Rigidbody2D>();
+    }
+    #endregion
     private void Update()
     {
-        PlayerMovementUpAndDown();
-
-        Bullet();
+        PlayerMove();
+        FireBullet();
 
     }
 
 
 
-    private void PlayerMovementUpAndDown()
+    private void PlayerMove()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            transform.Translate(Vector2.up);
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            transform.Translate(Vector2.down);
-        }
+        moveSpeed = 10;
+        dirX = Input.GetAxisRaw("Horizontal") * moveSpeed;
+        dirY = Input.GetAxisRaw("Vertical") * moveSpeed;
+        playerRb.velocity = new Vector2 (dirX, dirY);
     }
 
-    public void Bullet()
+    public void FireBullet()
     {
         Rigidbody cloneBullet;
         if (Input.GetKeyDown(KeyCode.Space)) 
         {
             
-            cloneBullet = Instantiate(bullet,new Vector3(-15.9890003f, 0.651000023f, 0),transform.rotation);
+            cloneBullet = Instantiate(bullet,new Vector3(playerTransform.position.x ,playerTransform.position.y, 0),transform.rotation);
             cloneBullet.velocity = transform.TransformDirection(Vector3.right *20);
             Destroy(cloneBullet.gameObject, 2);
         }

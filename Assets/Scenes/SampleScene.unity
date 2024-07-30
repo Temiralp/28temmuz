@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a427ad8c2b091e458043d9b97147469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
+  enemy: {fileID: 5129545433777319196, guid: 41ebedef76bbd374f829530b95b8c86c, type: 3}
   spawnTime: 2
 --- !u!4 &829059342
 Transform:
@@ -1206,3 +1206,4 @@ SceneRoots:
   - {fileID: 591267495}
   - {fileID: 1936840206}
   - {fileID: 695622561}
+  - {fileID: 396807947}
