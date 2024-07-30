@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]private Rigidbody bullet;
-    [SerializeField]private Transform playerTransform;
+    
+    
     private Rigidbody2D playerRb;
 
     private float moveSpeed;
@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         PlayerMove();
-        FireBullet();
+        
 
     }
 
@@ -36,18 +36,7 @@ public class PlayerMovement : MonoBehaviour
         playerRb.velocity = new Vector2 (dirX, dirY);
     }
 
-    public void FireBullet()
-    {
-        Rigidbody cloneBullet;
-        if (Input.GetKeyDown(KeyCode.Space)) 
-        {
-            
-            cloneBullet = Instantiate(bullet,new Vector3(playerTransform.position.x ,playerTransform.position.y, 0),transform.rotation);
-            cloneBullet.velocity = transform.TransformDirection(Vector3.right *20);
-            Destroy(cloneBullet.gameObject, 2);
-        }
-        
-    }
+    
 
     
 }
