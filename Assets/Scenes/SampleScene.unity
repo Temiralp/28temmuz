@@ -133,11 +133,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2891143909050402590, guid: 46c5c13eeb7415d4f995785b543d9b26, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.708477
+      value: -6.08
       objectReference: {fileID: 0}
     - target: {fileID: 2891143909050402590, guid: 46c5c13eeb7415d4f995785b543d9b26, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5955176
+      value: -7.66
       objectReference: {fileID: 0}
     - target: {fileID: 2891143909050402590, guid: 46c5c13eeb7415d4f995785b543d9b26, type: 3}
       propertyPath: m_LocalPosition.z
@@ -210,15 +210,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3242054756156653182, guid: 90ff419ba8c17ce45b904266d6134d5a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3242054756156653182, guid: 90ff419ba8c17ce45b904266d6134d5a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3242054756156653182, guid: 90ff419ba8c17ce45b904266d6134d5a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3242054756156653182, guid: 90ff419ba8c17ce45b904266d6134d5a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a427ad8c2b091e458043d9b97147469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
+  enemy: {fileID: 5129545433777319196, guid: 41ebedef76bbd374f829530b95b8c86c, type: 3}
   spawnTime: 2
 --- !u!4 &829059342
 Transform:
@@ -585,7 +585,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1512752779
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1019,7 +1019,7 @@ RectTransform:
   m_Father: {fileID: 1512752779}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1200,10 +1200,10 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1841601286}
-  - {fileID: 396807947}
   - {fileID: 508762137}
   - {fileID: 913214076}
   - {fileID: 829059342}
   - {fileID: 591267495}
   - {fileID: 1936840206}
   - {fileID: 695622561}
+  - {fileID: 396807947}

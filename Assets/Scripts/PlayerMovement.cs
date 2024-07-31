@@ -1,3 +1,4 @@
+using JetBrains.Rider.Unity.Editor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -5,37 +6,27 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]private GameObject bullet;
-    
+    private Rigidbody2D playerRb;
+    private float moveSpeed;
+    float dirX, dirY;
+
+    #region Initiliaze
+    private void Awake()
+    {
+        playerRb = GetComponent<Rigidbody2D>();
+    }
+    #endregion
     private void Update()
     {
-        PlayerMovementUpAndDown();
-
-
+        PlayerMove();
 
     }
 
-
-
-    private void PlayerMovementUpAndDown()
+    private void PlayerMove()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            transform.Translate(Vector2.up);
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            transform.Translate(Vector2.down);
-        }
+        moveSpeed = 10;
+        dirX = Input.GetAxisRaw("Horizontal") * moveSpeed;
+        dirY = Input.GetAxisRaw("Vertical") * moveSpeed;
+        playerRb.velocity = new Vector2 (dirX, dirY);
     }
-
-    public void Bullet()
-    {
-        if(Input.GetKeyDown(KeyCode.Space)) 
-        {
-            Instantiate(bullet);
-        }
-    }
-
-    
 }

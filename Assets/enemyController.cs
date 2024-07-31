@@ -12,7 +12,7 @@ public class NewBehaviourScript : MonoBehaviour
     private float moveHorizontal = 0f;
     private float moveVertical = 0f;
     private float movementSpeed = 5f;
-
+    public float followRange = 10.0f;
     private void Awake()
     {
 
