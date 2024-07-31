@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {   
     [SerializeField] private TMP_InputField KullaniciAdi_InputField;
+    [SerializeField] private TextMeshProUGUI KayitliOyuncuAdi_Text;
     [SerializeField] private Button OyunuBaslat_Button;
 
     [SerializeField] private Image HealtBar;
@@ -17,36 +18,52 @@ public class UIManager : MonoBehaviour
 
     bool find = false;
     private int lastHealt = 0;
+    string oyuncuAdi;
     private void Awake() 
     {
         DontDestroyOnLoad(gameObject);    
     }
     private void Start() 
     {
+        if(PlayerPrefs.HasKey("oyuncuAdi"))
+        {
+            KullaniciAdi_InputField.gameObject.SetActive(false);
+            KayitliOyuncuAdi_Text.gameObject.SetActive(true);
+            KayitliOyuncuAdi_Text.text = "Oyuncu " + PlayerPrefs.GetString("oyuncuAdi") + " Olarak kayitlisiniz";
+        }
     }
 
     public void Basla_Button()
     {
-        if(KullaniciAdi_InputField.text != "")
+        if(KullaniciAdi_InputField.text != "" )
         {
-            string oyuncuAdi = KullaniciAdi_InputField.text;
+            print("Boş ");
+            oyuncuAdi = KullaniciAdi_InputField.text;
             PlayerPrefs.SetString("oyuncuAdi", oyuncuAdi);
             
             SceneManager.LoadScene(1);
+
+            StartCoroutine(FindUIElements());
+            StartCoroutine(HealtControl());
+
+        }
+        else
+        {
+            
+            
+            SceneManager.LoadScene(1);
+
             StartCoroutine(FindUIElements());
             StartCoroutine(HealtControl());
         }
     }
-
     private void Update() 
     {
-        
     }
-    //HealtBar
-    //OyuncuAdiText
+    
+    
     private IEnumerator FindUIElements()
     {
-        print("FindHealtBar");
         while (true && !find)
         {
             yield return new WaitForSeconds(.1f);
@@ -59,7 +76,6 @@ public class UIManager : MonoBehaviour
             }
             else if(HealtBar != null && oyuncuAdiText != null && healtText != null)
             {
-                print("buldu");
                 find = true;
                 StopCoroutine(FindUIElements());
             }
