@@ -581,7 +581,7 @@ GameObject:
   - component: {fileID: 1512752780}
   m_Layer: 5
   m_Name: HealtBar
-  m_TagString: Untagged
+  m_TagString: HealtBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -864,8 +864,8 @@ GameObject:
   - component: {fileID: 1972217908}
   - component: {fileID: 1972217907}
   m_Layer: 5
-  m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_Name: "CanDe\u011Feri_Text"
+  m_TagString: CanDegeriText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1073,8 +1073,8 @@ GameObject:
   - component: {fileID: 2046677327}
   - component: {fileID: 2046677326}
   m_Layer: 5
-  m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_Name: "OyuncuAd\u0131_Text"
+  m_TagString: OyuncuAdiText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
