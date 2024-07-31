@@ -7,6 +7,9 @@ TagManager:
   - enemy
   - enemy2
   - mermi
+  - HealtBar
+  - OyuncuAdiText
+  - CanDegeriText
   layers:
   - Default
   - TransparentFX
