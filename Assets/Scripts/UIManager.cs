@@ -10,11 +10,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_InputField KullaniciAdi_InputField;
     [SerializeField] private Button OyunuBaslat_Button;
 
-    [SerializeField] private Slider HealtBar;
+    [SerializeField] private Image HealtBar;
     [SerializeField] private TextMeshProUGUI oyuncuAdiText;
     [SerializeField] private TextMeshProUGUI healtText;
+    [SerializeField] private GameObject Player;
 
     bool find = false;
+    private int lastHealt = 0;
     private void Awake() 
     {
         DontDestroyOnLoad(gameObject);    
@@ -32,6 +34,7 @@ public class UIManager : MonoBehaviour
             
             SceneManager.LoadScene(1);
             StartCoroutine(FindUIElements());
+            StartCoroutine(HealtControl());
         }
     }
 
@@ -49,7 +52,7 @@ public class UIManager : MonoBehaviour
             yield return new WaitForSeconds(.1f);
             if(HealtBar == null && oyuncuAdiText == null && healtText == null)
             {
-                HealtBar = GameObject.FindWithTag("HealtBar").GetComponent<Slider>();
+                HealtBar = GameObject.FindWithTag("HealtBar").GetComponent<Image>();
                 oyuncuAdiText = GameObject.FindWithTag("OyuncuAdiText").GetComponent<TextMeshProUGUI>();
                 oyuncuAdiText.text = PlayerPrefs.GetString("oyuncuAdi");
                 healtText = GameObject.FindWithTag("CanDegeriText").GetComponent<TextMeshProUGUI>();
@@ -64,5 +67,19 @@ public class UIManager : MonoBehaviour
         
     }
 
-    
+    private IEnumerator HealtControl()
+    {
+        while(true)
+        {
+            Player = GameObject.Find("Player");
+            yield return new WaitForSeconds(1f);
+            if(Player != null && HealtBar != null)
+            {
+                float newHealt =   Player.GetComponent<Player>().health;
+
+                HealtBar.fillAmount = newHealt / 100;
+                healtText.text = Player.GetComponent<Player>().health.ToString();
+            }
+        }
+    }
 }
