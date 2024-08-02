@@ -178,21 +178,25 @@ public class UIManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             duraklatmaEkrani  = !duraklatmaEkrani;
-            DuraklatmaEkrani.gameObject.SetActive(duraklatmaEkrani);
-            
-            if(DuraklatmaEkrani.activeSelf)
+            if(DuraklatmaEkrani != null)
             {
-                if(DevamEt_Button == null && Cikis_Button == null)
+                DuraklatmaEkrani.gameObject.SetActive(duraklatmaEkrani);
+                if(DuraklatmaEkrani.activeSelf)
                 {
-                    print("Calisiyor");
-                    DevamEt_Button = GameObject.FindWithTag("DevamEt_Button").GetComponent<Button>();
-                    Cikis_Button = GameObject.FindWithTag("Cikis_Button").GetComponent<Button>();
+                    if(DevamEt_Button == null && Cikis_Button == null)
+                    {
+                        print("Calisiyor");
+                        DevamEt_Button = GameObject.FindWithTag("DevamEt_Button").GetComponent<Button>();
+                        Cikis_Button = GameObject.FindWithTag("Cikis_Button").GetComponent<Button>();
 
-                    DevamEt_Button.onClick.AddListener (()=>DevamEtButton_Function());
-                    Cikis_Button.onClick.AddListener(()=> CikisButton_Function());
+                        DevamEt_Button.onClick.AddListener (()=>DevamEtButton_Function());
+                        Cikis_Button.onClick.AddListener(()=> CikisButton_Function());
+                    }
+                
                 }
-               
             }
+            
+            
            
         }
     }
