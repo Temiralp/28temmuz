@@ -177,9 +177,9 @@ public class UIManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            duraklatmaEkrani  = !duraklatmaEkrani;
             if(DuraklatmaEkrani != null)
             {
+                duraklatmaEkrani  = !duraklatmaEkrani;
                 DuraklatmaEkrani.gameObject.SetActive(duraklatmaEkrani);
                 if(DuraklatmaEkrani.activeSelf)
                 {
@@ -195,9 +195,6 @@ public class UIManager : MonoBehaviour
                 
                 }
             }
-            
-            
-           
         }
     }
 
