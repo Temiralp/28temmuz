@@ -10,6 +10,9 @@ TagManager:
   - HealtBar
   - OyuncuAdiText
   - CanDegeriText
+  - Finish_Text
+  - FinishPanel
+  - DuraklatmaEkran_Panel
   layers:
   - Default
   - TransparentFX

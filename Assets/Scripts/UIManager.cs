@@ -16,8 +16,18 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI healtText;
     [SerializeField] private GameObject Player;
 
-    bool find = false;
-    private int lastHealt = 0;
+    [SerializeField] private GameObject FinishPanel;    
+    [SerializeField] private Image FinishPanel_Image;    
+    [SerializeField] private TextMeshProUGUI Finis_Text;
+
+    [SerializeField] private GameObject DuraklatmaEkran_Panel;
+    [SerializeField] private GameObject DuraklatmaEkrani;
+
+
+    private bool find = false;
+    private bool finish = false;
+    public bool Finish {get { return finish;}} 
+    private float playerHealt = 0;
     string oyuncuAdi;
     private void Awake() 
     {
@@ -31,13 +41,14 @@ public class UIManager : MonoBehaviour
             KayitliOyuncuAdi_Text.gameObject.SetActive(true);
             KayitliOyuncuAdi_Text.text = "Oyuncu " + PlayerPrefs.GetString("oyuncuAdi") + " Olarak kayitlisiniz";
         }
+
+        InvokeRepeating("FinishControl",0,0.1f);
     }
 
     public void Basla_Button()
     {
         if(KullaniciAdi_InputField.text != "" )
         {
-            print("Boş ");
             oyuncuAdi = KullaniciAdi_InputField.text;
             PlayerPrefs.SetString("oyuncuAdi", oyuncuAdi);
             
@@ -55,10 +66,13 @@ public class UIManager : MonoBehaviour
 
             StartCoroutine(FindUIElements());
             StartCoroutine(HealtControl());
+
+            
         }
     }
     private void Update() 
     {
+        
     }
     
     
@@ -73,6 +87,12 @@ public class UIManager : MonoBehaviour
                 oyuncuAdiText = GameObject.FindWithTag("OyuncuAdiText").GetComponent<TextMeshProUGUI>();
                 oyuncuAdiText.text = PlayerPrefs.GetString("oyuncuAdi");
                 healtText = GameObject.FindWithTag("CanDegeriText").GetComponent<TextMeshProUGUI>();
+                Finis_Text = GameObject.FindWithTag("Finish_Text").GetComponent<TextMeshProUGUI>();
+                FinishPanel = GameObject.FindWithTag("FinishPanel");
+
+                DuraklatmaEkran_Panel = GameObject.FindWithTag("DuraklatmaEkran_Panel");
+                DuraklatmaEkrani = DuraklatmaEkran_Panel.transform.GetChild(0).gameObject;
+                
             }
             else if(HealtBar != null && oyuncuAdiText != null && healtText != null)
             {
@@ -88,14 +108,64 @@ public class UIManager : MonoBehaviour
         while(true)
         {
             Player = GameObject.Find("Player");
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.01f);
             if(Player != null && HealtBar != null)
             {
-                float newHealt =   Player.GetComponent<Player>().health;
+                playerHealt =   Player.GetComponent<Player>().health;
 
-                HealtBar.fillAmount = newHealt / 100;
+                HealtBar.fillAmount = playerHealt / 100;
                 healtText.text = Player.GetComponent<Player>().health.ToString();
             }
         }
     }
+
+    public void FinishControl()
+    {
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            if(Player != null)
+            {
+                if(Player.GetComponent<Player>().health <= 0)
+                {
+                    FinishPanel_Image= FinishPanel.transform.GetChild(0).GetComponent<Image>();
+
+                    CancelInvoke("FinishControl");
+                    
+                    StartCoroutine(FinishScreenAnimation());
+
+                }
+            }
+            
+        }
+    }
+
+    private IEnumerator FinishScreenAnimation()
+    {
+        float a = 0;
+        while (true && !finish)
+        {   
+            yield return new WaitForSeconds(1);
+            if(FinishPanel_Image.color.a < .5f)
+            {
+                
+                a += .1f;
+                FinishPanel_Image.color = new Color(FinishPanel_Image.color.r,FinishPanel_Image.color.g ,FinishPanel_Image.color.b ,a);
+            }
+            else if(FinishPanel_Image.color.a >= .5f)
+            {
+                Finis_Text.text = "Oyuncu " + PlayerPrefs.GetString("oyuncuAdi") + " kaybetti";
+                finish = true;
+                StopCoroutine(FinishScreenAnimation());
+            }
+        }
+    }
+
+    private void UI_InputControl()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+
+        }
+    }
+
 }
