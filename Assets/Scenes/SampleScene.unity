@@ -1356,7 +1356,7 @@ GameObject:
   - component: {fileID: 1531575308}
   m_Layer: 5
   m_Name: Cikis_Button
-  m_TagString: Untagged
+  m_TagString: Cikis_Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1780,7 +1780,7 @@ GameObject:
   - component: {fileID: 1854492280}
   m_Layer: 5
   m_Name: DevamEt_Button
-  m_TagString: Untagged
+  m_TagString: DevamEt_Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
