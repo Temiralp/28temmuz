@@ -13,6 +13,8 @@ TagManager:
   - Finish_Text
   - FinishPanel
   - DuraklatmaEkran_Panel
+  - DevamEt_Button
+  - Cikis_Button
   layers:
   - Default
   - TransparentFX
